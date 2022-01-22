@@ -37,3 +37,9 @@ const reviews = [
       "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
   },
 ];
+
+// TODO
+// 1. Connect the reviews array with the frontend
+// 2. Have left button go through people from right to left
+// 3. Have right button go through people from left to right
+// 4. Have the "Surprise Me" button select a random person in the array
