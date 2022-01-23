@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Q & A</title>
     <!-- font-awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <!-- extra fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap"
@@ -18,7 +15,88 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>questions project</h1>
+      <section class="questions">
+        <!-- title -->
+        <div class="title">
+          <h2>general questions</h2>
+        </div>
+        <!-- questions -->
+        <div class="section-center">
+          <!-- single question -->
+          <article class="question">
+            <!-- question title -->
+            <div class="question-title" data-faq-target="#question-1" data-faq-icon-plus="#icon-plus-1" data-faq-icon-minus="#icon-minus-1">
+              <p>do you accept all major credit cards?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon" id="icon-plus-1" data-faq-icon-plus-child>
+                  <i class="far fa-plus-square"></i>
+                </span>
+                <span class="minus-icon" id="icon-minus-1" data-faq-icon-minus-child>
+                  <i class="far fa-minus-square"></i>
+                </span>
+              </button>
+            </div>
+            <!-- question text -->
+            <div class="question-text" id="question-1" data-faq-content>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                dolore illo dolores quia nemo doloribus quaerat, magni numquam
+                repellat reprehenderit.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <!-- single question -->
+          <article class="question">
+            <!-- question title -->
+            <div class="question-title" data-faq-target="#question-2" data-faq-icon-plus="#icon-plus-2" data-faq-icon-minus="#icon-minus-2">
+              <p>do you suppport local farmers?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon" id="icon-plus-2" data-faq-icon-plus-child>
+                  <i class="far fa-plus-square"></i>
+                </span>
+                <span class="minus-icon" id="icon-minus-2" data-faq-icon-minus-child>
+                  <i class="far fa-minus-square"></i>
+                </span>
+              </button>
+            </div>
+            <!-- question text -->
+            <div class="question-text" id="question-2" data-faq-content>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                dolore illo dolores quia nemo doloribus quaerat, magni numquam
+                repellat reprehenderit.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <!-- single question -->
+          <article class="question">
+            <!-- question title -->
+            <div class="question-title" data-faq-target="#question-3" data-faq-icon-plus="#icon-plus-3" data-faq-icon-minus="#icon-minus-3">
+              <p>do you use organic ingredients?</p>
+              <!-- button -->
+              <button type="button" class="question-btn">
+                <span class="plus-icon" id="icon-plus-3" data-faq-icon-plus-child>
+                  <i class="far fa-plus-square"></i>
+                </span>
+                <span class="minus-icon" id="icon-minus-3" data-faq-icon-minus-child>
+                  <i class="far fa-minus-square"></i>
+                </span>
+              </button>
+            </div>
+            <!-- question text -->
+            <div class="question-text" id="question-3" data-faq-content>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                dolore illo dolores quia nemo doloribus quaerat, magni numquam
+                repellat reprehenderit.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+      </section>
+    </main>
     <!-- javascript -->
     <script src="app.js"></script>
   </body>

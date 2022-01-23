@@ -223,13 +223,45 @@ Questions
 .question-btn:hover {
   transform: rotate(90deg);
 }
+
+
+
+/* My changes */
+
+
 .question-text {
   padding: 1rem 0 1.5rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+  display: none;
 }
+
+.question-text.active {
+  display: block;
+}
+
 .question-text p {
   margin-bottom: 0;
 }
+
+.minus-icon {
+  display: none;
+}
+
+.minus-icon.active {
+  display: inline;
+}
+
+.plus-icon {
+  display: inline;
+}
+
+.plus-icon.active {
+  display: none;
+}
+
+
+
+
 /* hide text */
 /* .question-text {
   display: none;
