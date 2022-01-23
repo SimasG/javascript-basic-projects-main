@@ -38,8 +38,55 @@ const reviews = [
   },
 ];
 
-// TODO
-// 1. Connect the reviews array with the frontend
-// 2. Have left button go through people from right to left
-// 3. Have right button go through people from left to right
-// 4. Have the "Surprise Me" button select a random person in the array
+
+// Declaring main object elements 
+const nameVariable = document.getElementById('author');
+const jobVariable = document.getElementById('job');
+const imgVariable = document.getElementById('person-img');
+const textVariable = document.getElementById('info');
+
+// Declaring buttons
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const randomBtn = document.querySelector('.random-btn');
+
+let counter = 0;
+
+function showPerson() {
+  // Why does currentReview have to be local and not global here?
+  const currentReview = reviews[counter];
+  nameVariable.textContent = currentReview.name;
+  jobVariable.textContent = currentReview.job;
+  imgVariable.src = currentReview.img;
+  textVariable.textContent = currentReview.text;  
+}
+
+// default state
+window.addEventListener('DOMContentLoaded', () => {
+  showPerson();
+})
+
+// next button
+nextBtn.addEventListener('click', () => {
+  counter++;
+  if (counter > reviews.length - 1) {
+    counter = 0;
+  }
+  showPerson();
+
+})
+
+// prev button
+prevBtn.addEventListener('click', () => {
+  counter--;
+  if (counter < 0) {
+    counter = reviews.length - 1;
+  }
+  showPerson();
+})
+
+// random button
+randomBtn.addEventListener('click', () => {
+  counter = Math.floor(Math.random () * reviews.length);
+  showPerson();
+})
