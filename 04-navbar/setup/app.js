@@ -3,3 +3,10 @@
 // add - add class
 // remove - remove class
 // toggle - toggles class
+
+const hamburger = document.querySelector('.nav-toggle');
+const links = document.querySelector('.links');
+
+hamburger.addEventListener('click', () => {
+    links.classList.toggle('active');
+})

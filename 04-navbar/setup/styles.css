@@ -105,6 +105,8 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -199,13 +201,19 @@ nav {
   display: none;
 }
 .links {
-  /* height: 0;
+  height: 0;
   overflow: hidden;
-  transition: var(--transition); */
+  transition: var(--transition);
 }
-.show-links {
+/* .show-links {
+  height: 10rem;
+} */
+
+.links.active {
+  display: block;
   height: 10rem;
 }
+
 @media screen and (min-width: 800px) {
   .nav-center {
     max-width: 1170px;
