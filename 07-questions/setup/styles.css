@@ -232,18 +232,18 @@ Questions
 .question-text {
   padding: 1rem 0 1.5rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  display: none;
+  /* display: none; */
 }
 
-.question-text.active {
+/* .question-text.active {
   display: block;
-}
+} */
 
 .question-text p {
   margin-bottom: 0;
 }
 
-.minus-icon {
+/* .minus-icon {
   display: none;
 }
 
@@ -257,13 +257,13 @@ Questions
 
 .plus-icon.active {
   display: none;
-}
+} */
 
 
 
 
 /* hide text */
-/* .question-text {
+.question-text {
   display: none;
 }
 .show-text .question-text {
@@ -277,4 +277,4 @@ Questions
 }
 .show-text .plus-icon {
   display: none;
-} */
+}
