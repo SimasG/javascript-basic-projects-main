@@ -72,3 +72,52 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+
+
+// targeting the .section-center area because that's where we want to dynamically store all the menu items
+const sectionCenter = document.querySelector(".section-center");
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+// load items
+window.addEventListener("DOMContentLoaded", () => {
+  displayMenuItems(menu);
+})
+
+// filter buttons
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const category = e.currentTarget.dataset.id;
+
+    // filter method
+    function filter () {
+      let filteredMenu = menu.filter((menuCategory) => {
+        menuCategory = category;    
+    }
+  })
+
+  filter();
+  })
+})
+
+
+function displayMenuItems(menuItems) {
+  // "menu.map((item) =>" fetches every single item within the menu array
+  let displayMenu = menuItems.map(function(item) {
+
+    // Using template strings -> using them to dynamically fetch every item in the menu array
+    return `<article class="menu-item">
+    <img src=${item.img} alt=${item.title} class="photo"/>
+    <div class="item-info">
+      <header>
+        <h4>${item.title}</h4>
+        <h4 class="price">$${item.price}</h4>
+      </header>
+      <p class="item-text">${item.desc}</p>
+    </div>
+  </article>`
+  })
+  // joining all the generated template strings into one in order to place them all in a section center
+  displayMenu = displayMenu.join('');
+  // Populating the .section-center container with a dynamically generated list of menu items
+  sectionCenter.innerHTML = displayMenu;
+}
