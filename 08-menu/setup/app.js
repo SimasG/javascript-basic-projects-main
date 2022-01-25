@@ -89,6 +89,8 @@ const menu = [
 
 // targeting the .section-center area because that's where we want to dynamically store all the menu items
 const sectionCenter = document.querySelector(".section-center");
+
+// targeting the .btn-container area because that's where we want to dynamically store all the category btns
 const container = document.querySelector(".btn-container");
 
 // load items
@@ -97,9 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
   displayMenuButtons();
 })
 
-
-
-
+// making sure that all the menu items are dynamically populated
 function displayMenuItems(menuItems) {
   // "menu.map((item) =>" fetches every single item within the menu array
   let displayMenu = menuItems.map(function(item) {
@@ -123,12 +123,17 @@ function displayMenuItems(menuItems) {
 }
 
 function displayMenuButtons() {
+  // finding unique categories only
   const categories = menu.reduce(function (values, item) {
+    // if the values array (["all"], for now) doesn't include the item.category (will loop through the 
+    // whole menu array), then we add it to the values array
     if (!values.includes(item.category)) {
       values.push(item.category);
     }
     return values;
   },["all"])
+  
+  // populating HTML with the unique buttons. categoryBtns is just a list of unique category names.
   const categoryBtns = categories.map(function (category) {
     return `</button>
     <button type="button" class="filter-btn" data-id=${category}>
@@ -137,6 +142,10 @@ function displayMenuButtons() {
   })
   .join('');
   container.innerHTML = categoryBtns;
+
+  // I need to have .filter-btn class buttons declared AFTER populating the filtered categoryBtns 
+  // because you can only access dynamic content once it's been added
+  // but BEFORE the filterBtns.forEach because the forEach method wouldn't have anything to loop through
   const filterBtns = document.querySelectorAll(".filter-btn");
 
   // filter buttons
@@ -145,6 +154,7 @@ function displayMenuButtons() {
       // fetch the name of the category of the button
       const category = e.currentTarget.dataset.id;
 
+      // fetch an array of items with a category of the button that has been clicked
       const menuCategory = menu.filter((menuItem) => {
         // console.log(menuItem.category);
         // menuItem.category just fetches one category at a time (with a forEach loop above). 
@@ -153,7 +163,6 @@ function displayMenuButtons() {
           return menuItem;
         }
       })
-      // console.log(menuCategory);
 
       // handling the "all" category
       if (category === "all") {
@@ -163,5 +172,4 @@ function displayMenuButtons() {
       }
     })
   })
-
 }

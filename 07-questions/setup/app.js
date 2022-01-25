@@ -13,9 +13,6 @@ const questions = document.querySelectorAll(".question");
 
 questions.forEach(function (question) {
   const btn = question.querySelector(".question-btn");
-//   const faqText = question.querySelector(".question-text");
-//   const plusIcon = question.querySelector(".plus-icon");
-//   const minusIcon = question.querySelector(".minus-icon");
 
   btn.addEventListener("click", function () {
 
