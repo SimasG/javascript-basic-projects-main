@@ -71,33 +71,33 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "steak dinner",
+    category: "dinner",
+    price: 39.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
+
+// *Making category button creation dynamic instead of hard-coded*
+// 1. Get only unique categories
+// 2. Iterate over categories return buttons
+// 3. Make sure to select button when they are available
 
 
 // targeting the .section-center area because that's where we want to dynamically store all the menu items
 const sectionCenter = document.querySelector(".section-center");
-const filterBtns = document.querySelectorAll(".filter-btn");
+const container = document.querySelector(".btn-container");
 
 // load items
 window.addEventListener("DOMContentLoaded", () => {
   displayMenuItems(menu);
+  displayMenuButtons();
 })
 
-// filter buttons
-filterBtns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    const category = e.currentTarget.dataset.id;
 
-    // filter method
-    function filter () {
-      let filteredMenu = menu.filter((menuCategory) => {
-        menuCategory = category;    
-    }
-  })
-
-  filter();
-  })
-})
 
 
 function displayMenuItems(menuItems) {
@@ -120,4 +120,48 @@ function displayMenuItems(menuItems) {
   displayMenu = displayMenu.join('');
   // Populating the .section-center container with a dynamically generated list of menu items
   sectionCenter.innerHTML = displayMenu;
+}
+
+function displayMenuButtons() {
+  const categories = menu.reduce(function (values, item) {
+    if (!values.includes(item.category)) {
+      values.push(item.category);
+    }
+    return values;
+  },["all"])
+  const categoryBtns = categories.map(function (category) {
+    return `</button>
+    <button type="button" class="filter-btn" data-id=${category}>
+    ${category}
+    </button>`
+  })
+  .join('');
+  container.innerHTML = categoryBtns;
+  const filterBtns = document.querySelectorAll(".filter-btn");
+
+  // filter buttons
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      // fetch the name of the category of the button
+      const category = e.currentTarget.dataset.id;
+
+      const menuCategory = menu.filter((menuItem) => {
+        // console.log(menuItem.category);
+        // menuItem.category just fetches one category at a time (with a forEach loop above). 
+        // Once it's the same as the category of the clicked button, the item with that category is returned.
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      })
+      // console.log(menuCategory);
+
+      // handling the "all" category
+      if (category === "all") {
+        displayMenuItems(menu);
+      } else {
+        displayMenuItems(menuCategory);
+      }
+    })
+  })
+
 }
