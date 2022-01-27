@@ -1,7 +1,7 @@
 // Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
 // pageYOffset is a read - only window property that returns the number of pixels the document has been scrolled vertically.
 // slice extracts a section of a string without modifying original string
-//offsetTop - A Number, representing the top position of the element, in pixels
+// offsetTop - A Number, representing the top position of the element, in pixels
 
 // ********** set date ************
 const date = document.getElementById('date');
@@ -34,8 +34,10 @@ const topLink = document.querySelector('.top-link');
 // ********** fixed navbar ************
 window.addEventListener('scroll', () => {
     let scrollHeight = window.pageYOffset;
+    // console.log(scrollHeight);
 
     const navHeight = navbar.getBoundingClientRect().height;
+    // console.log(navHeight);
 
     if (scrollHeight > navHeight) {
         navbar.classList.add('fixed-nav')
@@ -52,3 +54,45 @@ window.addEventListener('scroll', () => {
 
 // ********** smooth scroll ************
 // select links
+
+// 1. Calculate the scrolled height and subtract the navHeight -> scroll that much
+const scrollLinks = document.querySelectorAll('.scroll-link');
+
+scrollLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+        // prevent default page scroll
+        e.preventDefault();
+
+        // get the name of the clicked link
+        const id = e.currentTarget.getAttribute('href').slice(1);
+
+        // fetch the section of the clicked link
+        const element = document.getElementById(id);
+
+        // find heights
+        const navHeight = navbar.getBoundingClientRect().height;
+        const containerHeight = linksContainer.getBoundingClientRect().height;
+        let position = element.offsetTop - navHeight;
+
+        const fixedNav = navbar.classList.contains('fixed-nav');
+
+        // if there is no fixed navbar, subtract additional navHeight from position 
+        if (!fixedNav) {
+            position = position - navHeight;
+        }
+
+        // handling the case when the menu is expanded in mobile view
+        if (navHeight > 82) {
+            position = position + containerHeight;
+        }
+        console.log(containerHeight);
+
+        window.scrollTo({
+            left: 0,
+            top: position,
+        });
+
+        linksContainer.style.height = 0;
+    })
+})
+
