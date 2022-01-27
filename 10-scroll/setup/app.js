@@ -13,10 +13,9 @@ const linksContainer = document.querySelector('.links-container');
 const links = document.querySelector('.links');
 
 navToggle.addEventListener('click', () => {
-    containerHeight = linksContainer.getBoundingClientRect().height;
-    // console.log(containerHeight)
+    const containerHeight = linksContainer.getBoundingClientRect().height;
 
-    linksHeight = links.getBoundingClientRect().height;
+    const linksHeight = links.getBoundingClientRect().height;
     // console.log(linksHeight);
 
     if (containerHeight === 0) {
@@ -54,8 +53,6 @@ window.addEventListener('scroll', () => {
 
 // ********** smooth scroll ************
 // select links
-
-// 1. Calculate the scrolled height and subtract the navHeight -> scroll that much
 const scrollLinks = document.querySelectorAll('.scroll-link');
 
 scrollLinks.forEach((link) => {
